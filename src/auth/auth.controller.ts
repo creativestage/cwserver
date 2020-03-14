@@ -1,4 +1,5 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Req } from '@nestjs/common';
+import {Request} from 'express';
 import {AuthService} from './auth.service';
 import {UserSchemaDot} from './auth.schemas';
 import {Invited} from '../../Tools/common';
@@ -23,7 +24,7 @@ export class AuthController {
    * 登录接口
    */
   @Post('login')
-  async login(@Body() userVo: UserSchemaDot): Promise<Object> {
+  async login(@Body() userVo: UserSchemaDot, @Req() req): Promise<Object> {
     const user = await this.authService.findUser(userVo.name);
     if (!user) {
       return Invited.fail('用户不存在');
@@ -31,6 +32,7 @@ export class AuthController {
     if (user.password !== userVo.password) {
       return Invited.fail('用户名或密码错误');
     }
+    req.session.user = user;
     return Invited.success(sign({name: user.name, id: user._id}));
   }
 }

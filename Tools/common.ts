@@ -15,3 +15,5 @@ export const Invited = {
     }
   }
 }
+
+export const getPageName = () => `page-${Math.random().toString(16).slice(2, 10)}.html`

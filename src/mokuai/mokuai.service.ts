@@ -7,11 +7,33 @@ import { MokuaiSchema, MokuaiSchemaDot } from './mokuai.schema';
 @Injectable()
 export class MokuaiService {
   constructor(@InjectModel('Mokuai') private readonly mokuaiServe: Model<MokuaiSchemaDot>) {}
-  createMokuai(vo: MokuaiSchemaDot) : Promise<MokuaiSchemaDot> {
+  create(vo: MokuaiSchemaDot) : Promise<MokuaiSchemaDot> {
     const creator = new this.mokuaiServe(vo);
     return creator.save();
   }
-  findById(id: Schema.Types.ObjectId): Promise<MokuaiSchemaDot> {
-    return this.mokuaiServe.findById(id);
+  /**
+   * 分页查询方法
+   * @param queryVo 字段查新对象
+   * @param limit 长度
+   * @param skip 跳过长度
+   */
+  findList(queryVo: Object, limit: Number, skip: Number): Promise<Array<MokuaiSchemaDot>> {
+    return this.mokuaiServe
+      .find(queryVo)
+      .limit(limit)
+      .skip(skip)
+      .exec();
+  }
+  findOne(queryVo: Object): Promise<MokuaiSchemaDot> {
+    return this.mokuaiServe.findOne(queryVo);
+  }
+  updateOne(vo: MokuaiSchemaDot): Promise<MokuaiSchemaDot> {
+    return this.mokuaiServe.findByIdAndUpdate(vo._id, vo, {new: true, upsert: true});
+  }
+  lockOne(id: String): Promise<MokuaiSchemaDot> {
+    return this.mokuaiServe.findByIdAndUpdate(id, {lockflag: true}, {new: true, upsert: true});
+  }
+  unlockOne(id: String): Promise<MokuaiSchemaDot> {
+    return this.mokuaiServe.findByIdAndUpdate(id, {lockflag: false}, {new: true, upsert: true});
   }
 }

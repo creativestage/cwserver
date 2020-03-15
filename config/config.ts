@@ -18,7 +18,7 @@ let dbUrl = isProd ? production_url : develop_url;
 
 export default {
   dbUrl,
-  safeOrigins: ['http://localhost:8080', 'http://zhangyy.xyz:8080'],
+  safeOrigins: ['http://localhost:8080', 'http://zhangyy.xyz:8080', 'http://cw.zhangyy.xyz'],
   accessKey : 'K4Krrpup7qqfV0T5Y4g6xRBLB5LHUWF3zYAnsDgx',
   secretKey : 'R3oN2togvlcExR4bKNSk5BpbqswrxsH6StURTAKp',
   scope: 'public',

@@ -1,4 +1,4 @@
-let production_url = 'zhangyy.xyz:20000';
+let production_url = '127.0.0.1:20000';
 let develop_url = 'localhost:27017';
 function getIPAdress(){  
   var interfaces = require('os').networkInterfaces();  

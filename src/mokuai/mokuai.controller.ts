@@ -28,7 +28,6 @@ export class MokuaiController {
   // }
   @Post('create')
   async create(@Body() mokuaiVo): Promise<Object> {
-    console.log(mokuaiVo)
     let newMokuai = await this.mokuaiService.create(mokuaiVo);
     return Invited.success(newMokuai);
   }

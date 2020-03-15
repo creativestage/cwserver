@@ -10,6 +10,7 @@ import { PageModule } from './page/page.module';
   imports: [
     MongooseModule.forRoot(`mongodb://${config.dbUrl}/cwdata`, {
       useNewUrlParser: true,
+      useFindAndModify: false,
       connectionFactory: (connection) => {
         connection.plugin(require('mongoose-autopopulate'));
         return connection;

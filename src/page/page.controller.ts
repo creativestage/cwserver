@@ -13,7 +13,7 @@ export class PageController {
     const promises = body.mokuais.map(async (item) => {
       let mokuai = await this.pageService.findMokuaiById(item._id);
       return {
-        id: mokuai.key,
+        id: item.id,
         html: mokuai.html,
         css: mokuai.css,
         js: mokuai.js,
@@ -44,7 +44,6 @@ export class PageController {
   @Post('preview')
   async preview(@Body() body): Promise<Object> {
     body.mokuais.forEach(item => {
-      item.id = item.key;
       item.config = JSON.stringify(item.configuration);
     });
     try {

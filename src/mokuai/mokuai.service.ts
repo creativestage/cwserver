@@ -31,9 +31,9 @@ export class MokuaiService {
     return this.mokuaiServe.findByIdAndUpdate(vo._id, vo, {new: true, upsert: true});
   }
   lockOne(id: String): Promise<MokuaiSchemaDot> {
-    return this.mokuaiServe.findByIdAndUpdate(id, {lockflag: true}, {new: true, upsert: true});
+    return this.mokuaiServe.findByIdAndUpdate(id, {lockFlag: true}, {new: true, upsert: true});
   }
   unlockOne(id: String): Promise<MokuaiSchemaDot> {
-    return this.mokuaiServe.findByIdAndUpdate(id, {lockflag: false}, {new: true, upsert: true});
+    return this.mokuaiServe.findByIdAndUpdate(id, {lockFlag: false}, {new: true, upsert: true});
   }
 }

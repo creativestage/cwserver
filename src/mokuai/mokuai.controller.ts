@@ -58,4 +58,18 @@ export class MokuaiController {
     let result = await this.mokuaiService.unlockOne(body.id);
     return Invited.success(result);
   }
+  @Post('fork')
+  async fork(@Body() body): Promise<Object> {
+    let mokuai = await this.mokuaiService.findOne({_id: body.id});
+    if (!mokuai) {
+      return Invited.fail('参数错误');
+    }
+    // 目标模块数据修改为新模块所需数据
+    mokuai = mokuai.toObject();
+    mokuai.forkId = mokuai._id;
+    delete mokuai._id;
+    
+    let newMokuai = await this.mokuaiService.create(mokuai);
+    return Invited.success(newMokuai);
+  }
 }

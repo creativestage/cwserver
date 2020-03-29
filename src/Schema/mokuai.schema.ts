@@ -13,7 +13,7 @@ export const MokuaiSchema = new mongoose.Schema({
     default: 'http://qn.zhangyy.xyz/3c2e1cd452.png',
   },
   version: String,
-  fockId: {
+  forkId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'module'
   },
@@ -25,8 +25,8 @@ export const MokuaiSchema = new mongoose.Schema({
 });
 
 export class MokuaiSchemaDot {
-  readonly _id: String
-  readonly key: String
+  _id: String
+  key: String
   readonly name: String
   readonly desc: String
   readonly html: String
@@ -35,7 +35,9 @@ export class MokuaiSchemaDot {
   readonly config: String
   readonly poster: String
   readonly version: String
-  readonly fockId: mongoose.Schema.Types.ObjectId
+  forkId: mongoose.Schema.Types.ObjectId
   readonly author: mongoose.Schema.Types.ObjectId
   readonly lockFlag: Boolean
+
+  toObject: Function
 }

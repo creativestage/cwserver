@@ -5,6 +5,7 @@ import config from '../config/config';
 import { AuthModule } from './auth/auth.module';
 import { MokuaiModule } from './mokuai/mokuai.module';
 import { PageModule } from './page/page.module';
+import {DocModule} from './document/document.module';
 
 @Module({
   imports: [
@@ -18,7 +19,8 @@ import { PageModule } from './page/page.module';
     }),
     AuthModule,
     MokuaiModule,
-    PageModule
+    PageModule,
+    DocModule
   ]
 })
 // export class AppModule implements NestModule{

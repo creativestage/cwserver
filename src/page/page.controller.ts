@@ -41,6 +41,11 @@ export class PageController {
     let result  = await this.pageService.findAll();
     return Invited.success(result);
   }
+  @Get('mypages')
+  async mypages(): Promise<Object> {
+    let result  = await this.pageService.findAll();
+    return Invited.success(result);
+  }
   @Post('preview')
   async preview(@Body() body): Promise<Object> {
     body.mokuais.forEach(item => {

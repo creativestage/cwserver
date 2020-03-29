@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Model, Schema } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
-import { MokuaiSchema, MokuaiSchemaDot } from './mokuai.schema';
+import { MokuaiSchema, MokuaiSchemaDot } from '../Schema';
 
 
 @Injectable()

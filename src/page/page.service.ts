@@ -19,4 +19,10 @@ export class PageService {
   findAll(): Promise<Array<PageSchemaDot>> {
     return this.pageService.find({});
   }
+  findById(id: String): Promise<PageSchemaDot> {
+    return this.pageService.findById(id);
+  }
+  delete(id: String): Promise<PageSchemaDot> {
+    return this.pageService.deleteOne({_id: id});
+  }
 }

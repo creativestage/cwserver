@@ -20,8 +20,8 @@ async function bootstrap() {
   app.use(session({ secret: 'cwsessionid', cookie: { maxAge: 60000 }}))
   // swagger配置
   const options = new DocumentBuilder()
-    .setTitle('Nodejs + Vuejs 全栈项目-后台管理API')
-    .setDescription('供后台管理界面调用的服务端API')
+    .setTitle('Nodejs + Vuejs 全栈项目-前端API')
+    .setDescription('供前端界面调用的服务端API')
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, options);

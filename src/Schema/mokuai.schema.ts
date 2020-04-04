@@ -15,11 +15,13 @@ export const MokuaiSchema = new mongoose.Schema({
   version: String,
   forkId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'module'
+    ref: 'Mokuai',
+    autopopulate: true
   },
   author: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'user'
+    ref: 'User',
+    autopopulate: true
   },
   lockFlag: Boolean,
 });

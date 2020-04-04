@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
 import {InjectModel} from '@nestjs/mongoose';
-import {UserSchema, UserSchemaDot} from './auth.schemas';
+import {UserSchema, UserSchemaDot} from '../Schema';
 @Injectable()
 export class AuthService {
   constructor(@InjectModel('User') private readonly userModel: Model<UserSchemaDot>) {}

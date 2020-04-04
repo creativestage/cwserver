@@ -1,8 +1,10 @@
 import { Controller, Get, Post, Body, Query, Headers, Req } from '@nestjs/common';
 import {DocumentService} from './document.service'
 import { Invited } from '../../Tools/common';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('api/doc')
+@ApiTags('文档相关接口')
 export class DocumentController {
   constructor(private readonly docService: DocumentService){}
   @Post('create')

@@ -1,11 +1,14 @@
 import { Controller, Post, Body, Req } from '@nestjs/common';
 import {Request} from 'express';
+import { ApiTags } from '@nestjs/swagger';
+
 import {AuthService} from './auth.service';
-import {UserSchemaDot} from './auth.schemas';
+import {UserSchemaDot} from '../Schema';
 import {Invited} from '../../Tools/common';
 import {sign} from '../../Tools/userSign';
 
 @Controller('auth')
+@ApiTags('用户相关接口')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
   /**

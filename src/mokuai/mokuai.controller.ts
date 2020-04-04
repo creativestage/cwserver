@@ -1,8 +1,10 @@
 import { Controller, Get, Post, Body, Query, Headers, Req } from '@nestjs/common';
 import {MokuaiService} from './mokuai.service'
 import { Invited } from '../../Tools/common';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('api/mokuai')
+@ApiTags('模块接口')
 export class MokuaiController {
   constructor(private readonly mokuaiService: MokuaiService){}
   @Get('find')

@@ -63,7 +63,7 @@
     "typescript": "^3.7.4",
     "vue": "^2.6.11",
     "vue-server-renderer": "^2.6.11",
-    "xstage-generate": "^1.0.3"
+    "xstage-generate": "^1.1.0"
   },
   "jest": {
     "moduleFileExtensions": [

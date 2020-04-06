@@ -36,6 +36,17 @@ export class AuthController {
       return Invited.fail('用户名或密码错误');
     }
     req.session.user = user;
-    return Invited.success(sign({name: user.name, id: user._id}));
+    return Invited.success({
+      token: sign({name: user.name, id: user._id}),
+      userInfo: {
+        name: user.name,
+        id: user._id
+      }
+    });
+  }
+  @Post('logout')
+  async logout(@Req() req):  Promise<Object> {
+    req.session.user = null;
+    return Invited.success({});
   }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Model, Schema } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
-import { MokuaiSchema, MokuaiSchemaDot } from '../Schema';
+import { MokuaiSchemaDot } from '../Schema';
 
 
 @Injectable()
@@ -23,6 +23,13 @@ export class MokuaiService {
       .limit(limit)
       .skip(skip)
       .exec();
+  }
+  /**
+   * 统计条数
+   * @param queryVo 查询字段
+   */
+  count(queryVo: Object):  Promise<Number> {
+    return this.mokuaiServe.count(queryVo).exec();
   }
   findOne(queryVo: Object): Promise<MokuaiSchemaDot> {
     return this.mokuaiServe.findOne(queryVo);

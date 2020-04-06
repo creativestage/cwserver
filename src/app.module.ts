@@ -23,11 +23,11 @@ import {DocModule} from './document/document.module';
     DocModule
   ]
 })
-// export class AppModule implements NestModule{
-//   configure(consumer: MiddlewareConsumer) {
-//     consumer
-//       .apply(VerifySignMiddleware)
-//       .forRoutes('api');
-//   }
-// }
-export class AppModule {}
+export class AppModule implements NestModule{
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(VerifySignMiddleware)
+      .forRoutes('api');
+  }
+}
+// export class AppModule {}

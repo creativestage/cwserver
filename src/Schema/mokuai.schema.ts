@@ -42,4 +42,5 @@ export class MokuaiSchemaDot {
   readonly lockFlag: Boolean
 
   toObject: Function
+  count: Function
 }

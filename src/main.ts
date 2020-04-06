@@ -17,7 +17,7 @@ async function bootstrap() {
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
   });
-  app.use(session({ secret: 'cwsessionid', cookie: { maxAge: 60000 }}))
+  app.use(session({ secret: 'cwsessionid', cookie: { maxAge: Infinity }}))
   // swagger配置
   const options = new DocumentBuilder()
     .setTitle('Nodejs + Vuejs 全栈项目-前端API')

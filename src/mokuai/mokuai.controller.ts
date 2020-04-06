@@ -22,19 +22,26 @@ export class MokuaiController {
     delete searchQuery.page;
     delete searchQuery.pageSize;
     let result = await this.mokuaiService.findList(searchQuery, limit, skip);
-    return Invited.success(result);
+    let count = await this.mokuaiService.count(searchQuery);
+    return Invited.success({
+      rows: result,
+      total: count
+    });
   }
   // @Get('findByUser')
   // async findByUser(@Headers() headers): Promise<Object> {
   //   console.log(headers);
   // }
   @Post('create')
-  async create(@Body() mokuaiVo): Promise<Object> {
+  async create(@Body() mokuaiVo, @Req() req): Promise<Object> {
+    console.log(req.session.user)
+    mokuaiVo.author = req.session.user._id;
     let newMokuai = await this.mokuaiService.create(mokuaiVo);
     return Invited.success(newMokuai);
   }
   @Post('update')
-  async update(@Body() mokuaiVo): Promise<Object> {
+  async update(@Body() mokuaiVo, @Req() req): Promise<Object> {
+    mokuaiVo.author = req.session.user._id;
     let mokuai = await this.mokuaiService.findOne({_id: mokuaiVo._id});
     if (!mokuai) {
       return Invited.fail('参数错误');

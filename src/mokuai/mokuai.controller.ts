@@ -28,10 +28,12 @@ export class MokuaiController {
       total: count
     });
   }
-  // @Get('findByUser')
-  // async findByUser(@Headers() headers): Promise<Object> {
-  //   console.log(headers);
-  // }
+  @Get('searchByUser')
+  async findByUser(@Req() req): Promise<Object> {
+    let userId = req.session.user._id;
+    let result = await this.mokuaiService.findList({author: userId});
+    return Invited.success(result)
+  }
   @Post('create')
   async create(@Body() mokuaiVo, @Req() req): Promise<Object> {
     console.log(req.session.user)
@@ -68,13 +70,14 @@ export class MokuaiController {
     return Invited.success(result);
   }
   @Post('fork')
-  async fork(@Body() body): Promise<Object> {
+  async fork(@Req() req, @Body() body): Promise<Object> {
     let mokuai = await this.mokuaiService.findOne({_id: body.id});
     if (!mokuai) {
       return Invited.fail('参数错误');
     }
     // 目标模块数据修改为新模块所需数据
     mokuai = mokuai.toObject();
+    mokuai.author = req.session.user._id;
     mokuai.forkId = mokuai._id;
     delete mokuai._id;
     

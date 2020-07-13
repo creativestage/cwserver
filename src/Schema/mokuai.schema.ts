@@ -38,7 +38,7 @@ export class MokuaiSchemaDot {
   readonly poster: String
   readonly version: String
   forkId: mongoose.Schema.Types.ObjectId
-  readonly author: mongoose.Schema.Types.ObjectId
+  author: mongoose.Schema.Types.ObjectId
   readonly lockFlag: Boolean
 
   toObject: Function

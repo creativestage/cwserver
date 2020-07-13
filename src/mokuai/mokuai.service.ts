@@ -17,7 +17,7 @@ export class MokuaiService {
    * @param limit 长度
    * @param skip 跳过长度
    */
-  findList(queryVo: Object, limit: Number, skip: Number): Promise<Array<MokuaiSchemaDot>> {
+  findList(queryVo: Object, limit?: Number, skip?: Number): Promise<Array<MokuaiSchemaDot>> {
     return this.mokuaiServe
       .find(queryVo)
       .limit(limit)

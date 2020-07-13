@@ -49,4 +49,9 @@ export class AuthController {
     req.session.user = null;
     return Invited.success({});
   }
+  @Post('checkLogin')
+  async checkLogin(@Req() req): Promise<Object> {
+    let userInfo = req.session.user;
+    return Invited.success(!!userInfo);
+  }
 }

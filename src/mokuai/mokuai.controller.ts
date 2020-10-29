@@ -36,14 +36,13 @@ export class MokuaiController {
   }
   @Post('create')
   async create(@Body() mokuaiVo, @Req() req): Promise<Object> {
-    console.log(req.session.user)
-    mokuaiVo.author = req.session.user._id;
+    // mokuaiVo.author = req.session.user._id;
     let newMokuai = await this.mokuaiService.create(mokuaiVo);
     return Invited.success(newMokuai);
   }
   @Post('update')
   async update(@Body() mokuaiVo, @Req() req): Promise<Object> {
-    mokuaiVo.author = req.session.user._id;
+    // mokuaiVo.author = req.session.user._id;
     let mokuai = await this.mokuaiService.findOne({_id: mokuaiVo._id});
     if (!mokuai) {
       return Invited.fail('参数错误');

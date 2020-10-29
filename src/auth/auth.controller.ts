@@ -28,21 +28,22 @@ export class AuthController {
    */
   @Post('login')
   async login(@Body() userVo: UserSchemaDot, @Req() req): Promise<Object> {
-    const user = await this.authService.findUser(userVo.name);
-    if (!user) {
-      return Invited.fail('用户不存在');
-    }
-    if (user.password !== userVo.password) {
-      return Invited.fail('用户名或密码错误');
-    }
-    req.session.user = user;
-    return Invited.success({
-      token: sign({name: user.name, id: user._id}),
-      userInfo: {
-        name: user.name,
-        id: user._id
-      }
-    });
+    // const user = await this.authService.findUser(userVo.name);
+    // if (!user) {
+    //   return Invited.fail('用户不存在');
+    // }
+    // if (user.password !== userVo.password) {
+    //   return Invited.fail('用户名或密码错误');
+    // }
+    // req.session.user = user;
+    // return Invited.success({
+    //   token: sign({name: user.name, id: user._id}),
+    //   userInfo: {
+    //     name: user.name,
+    //     id: user._id
+    //   }
+    // });
+    return Invited.success({userInfo: {name: 'admin', id: 1}});
   }
   @Post('logout')
   async logout(@Req() req):  Promise<Object> {
@@ -52,6 +53,7 @@ export class AuthController {
   @Post('checkLogin')
   async checkLogin(@Req() req): Promise<Object> {
     let userInfo = req.session.user;
-    return Invited.success(!!userInfo);
+    return Invited.success({name: 'admin', id: 1});
+    // return Invited.success(!!userInfo);
   }
 }

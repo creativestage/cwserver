@@ -76,7 +76,7 @@ export class MokuaiController {
     }
     // 目标模块数据修改为新模块所需数据
     mokuai = mokuai.toObject();
-    mokuai.author = req.session.user._id;
+    // mokuai.author = req.session.user._id;
     mokuai.forkId = mokuai._id;
     delete mokuai._id;
     

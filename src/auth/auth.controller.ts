@@ -43,7 +43,7 @@ export class AuthController {
     //     id: user._id
     //   }
     // });
-    return Invited.success({userInfo: {name: 'admin', id: 1}});
+    return Invited.success({userInfo: {name: userVo.name, id: 1}});
   }
   @Post('logout')
   async logout(@Req() req):  Promise<Object> {

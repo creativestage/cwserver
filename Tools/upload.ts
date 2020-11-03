@@ -8,11 +8,11 @@ const options = {
     scope
 };
 const putPolicy = new qiniu.rs.PutPolicy(options);
-const uploadToken = putPolicy.uploadToken(mac);
-const formUploader = new qiniu.form_up.FormUploader({uploadToken});
-const putExtra = new qiniu.form_up.PutExtra();
 
 const qiniuUpload = (stream, fname):Promise<String> => new Promise((resolve, reject) => {
+  const uploadToken = putPolicy.uploadToken(mac);
+  const formUploader = new qiniu.form_up.FormUploader({uploadToken});
+  const putExtra = new qiniu.form_up.PutExtra();
     formUploader.putStream(uploadToken, fname, stream, putExtra, (respErr, respBody, respInfo)=> {
       if (respErr) {
           reject(respErr);

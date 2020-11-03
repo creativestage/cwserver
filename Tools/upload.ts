@@ -3,13 +3,14 @@ const qiniu = require('qiniu');
 const stream = require('stream');
 
 const {accessKey, secretKey, scope, scopeBashSource} = config;
-const mac = new qiniu.auth.digest.Mac(accessKey, secretKey);   
+
+
+const qiniuUpload = (stream, fname):Promise<String> => new Promise((resolve, reject) => {
+  const mac = new qiniu.auth.digest.Mac(accessKey, secretKey);   
 const options = {
     scope
 };
 const putPolicy = new qiniu.rs.PutPolicy(options);
-
-const qiniuUpload = (stream, fname):Promise<String> => new Promise((resolve, reject) => {
   const uploadToken = putPolicy.uploadToken(mac);
   const formUploader = new qiniu.form_up.FormUploader({uploadToken});
   const putExtra = new qiniu.form_up.PutExtra();

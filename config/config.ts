@@ -13,7 +13,7 @@ function getIPAdress(){
   }
 }
 let ip = getIPAdress();
-let isProd = ip === '172.16.49.207';
+let isProd = false;
 let dbUrl = isProd ? production_url : develop_url;
 
 export default {
@@ -21,7 +21,7 @@ export default {
   safeOrigins: ['http://localhost:8080', 'http://zhangyy.xyz:8080', 'http://cw.zhangyy.xyz'],
   accessKey : 'K4Krrpup7qqfV0T5Y4g6xRBLB5LHUWF3zYAnsDgx',
   secretKey : 'R3oN2togvlcExR4bKNSk5BpbqswrxsH6StURTAKp',
-  scope: 'public',
-  scopeBashSource: 'http://qn.zhangyy.xyz/',
-  uploadHost: 'qn.zhangyy.xyz',
+  scope: 'seaview',
+  scopeBashSource: 'http://qn.memorysite.vip/',
+  uploadHost: 'qn.memorysite.vip',
 };

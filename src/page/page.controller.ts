@@ -63,7 +63,6 @@ export class PageController {
     });
     try {
       let htmlString = await createPage(body.title, body.mokuais);
-      // fs.writeFileSync('test11.html', htmlString)
       return Invited.success(htmlString);
     } catch(e) {
       return Invited.fail('页面生成失败');
